@@ -5,7 +5,7 @@ function TicketRow({ticket}) {
   return (
     <Link to={"/ticket/" + ticket.id}>
       <div>
-        {ticket.subject}
+        {ticket.id} {ticket.subject}
       </div>
     </Link>
   )

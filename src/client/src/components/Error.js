@@ -1,10 +1,11 @@
 import React from 'react'
 
 function Error({errMsg}) {
+  console.log(errMsg);
   return (
     <div>
-      Oh noes, something went wrong
-      <code>{errMsg}</code>
+      Oh no, something went wrong
+      {/* <code>{errMsg}</code> */}
     </div>
   )
 }
