@@ -1,5 +1,6 @@
 .App {
-  text-align: center;
+  text-align: left;
+  margin: 20px;
 }
 
 .App-logo {
@@ -25,12 +26,6 @@ body {
   background-color: #d7fffd;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
 .App-header {
   display: flex;
   flex-direction: column;
@@ -40,15 +35,6 @@ body {
   color: black;
 }
 
-.App-link {
-  color: #003948;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.ticket-detail {
+  text-align: left;
 }

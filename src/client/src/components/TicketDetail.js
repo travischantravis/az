@@ -25,25 +25,25 @@ function TicketDetail() {
         setErrorMsg(err)
       })
 
-
     // Specify how to clean up after this effect:
     return () => {};
   }, []);
 
   return (
-    <div>
+    <div className="ticket-detail">
       {ticket && requester ? 
         <React.Fragment>
-          <p>Ticket {id} Detail</p>
-          <p>{ticket.subject}</p>
-          <p>Requested by {requester.name}</p>
-          <p>{ticket.description}</p>
+          <p>Subject: {ticket.subject}</p>
+          <p>Requester: {requester.name}</p>
+          <p>Status: {ticket.status}</p>
+          <p>Created at: {(new Date(ticket.created_at)).toLocaleString()}</p>
+          <p>Description: {ticket.description}</p>
         </React.Fragment>
         :
         <div>Loading...</div>
       }
 
-      <Link to="/">Return to Home</Link>    
+      <Link to="/">Return to all tickets</Link>    
     </div>
   )
 }
