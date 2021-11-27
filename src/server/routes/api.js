@@ -7,20 +7,25 @@ require('dotenv').config()
 const baseUrl = "https://zendeskcodingchallenge5252.zendesk.com"
 const pageSize = 25
 
+// const header = {"Authorization": "Basicx " + process.env.BASIC}
 const header = {"Authorization": "Basic " + process.env.BASIC}
-console.log(header);
 
 router.get("/tickets", async function(req, res, next) {
   console.log('get "tickets" route hit');
-  const tickets = await axios.get(`${baseUrl}/api/v2/tickets.json?page[size]=${pageSize}`, {
-    headers: header
-  });
+  try{
+  
+    const tickets = await axios.get(`${baseUrl}/api/v2/tickets.json?page[size]=${pageSize}`, {
+      headers: header
+    });
 
-  const count = await axios.get(`${baseUrl}/api/v2/tickets/count.json`, {
-    headers: header
-  });
+    const count = await axios.get(`${baseUrl}/api/v2/tickets/count.json`, {
+      headers: header
+    });
 
-  res.send({"tickets":tickets.data, "count": count.data})
+    res.send({"tickets":tickets.data, "count": count.data, "error": null})
+  }catch(err){
+    res.send({"error": err})
+  }
 });
 
 router.get("/tickets/prev", async function(req, res, next) {

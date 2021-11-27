@@ -9,14 +9,11 @@ function TicketDetail() {
   const {id} = useParams()
 
   useEffect(() => {
-    console.log(id);
     fetch(`/api/ticket?id=${id}`)
       .then(res => {
-        // console.log("Ticket ",res.body);
         return res.json()
       })
       .then(json => {
-        console.log(json);
         setTicket(json.ticket.ticket)
         setRequester(json.requester.user)
         setErrorMsg("")

@@ -20,16 +20,19 @@ function Home() {
         return res.json()
       })
       .then(json => {
-        console.log("Zendesk", json);
-        console.log("Ticket", json.tickets.tickets[0]);
-        setTickets(json.tickets.tickets)
-        setTotalCount(json.count.count.value)
-        setCurPageCount(json.tickets.tickets.length)
-        setPagination({after: json.tickets.meta.after_cursor, before: json.tickets.meta.before_cursor})
-        setHasMore(json.tickets.meta.has_more)
-        setTotalPage(Math.ceil(json.count.count.value / pageSize))
-        setCurPage(0);
-        setErrorMsg("")
+        // console.log("Zendesk", json);
+        if(json.error){
+          setErrorMsg(json.error)
+        }else{       
+          setTickets(json.tickets.tickets)
+          setTotalCount(json.count.count.value)
+          setCurPageCount(json.tickets.tickets.length)
+          setPagination({after: json.tickets.meta.after_cursor, before: json.tickets.meta.before_cursor})
+          setHasMore(json.tickets.meta.has_more)
+          setTotalPage(Math.ceil(json.count.count.value / pageSize))
+          setCurPage(0);
+          setErrorMsg("")
+        }
       })
       .catch(err=>{
         setErrorMsg(err)
@@ -41,7 +44,6 @@ function Home() {
   }, []);
 
   function onPrevBtnClick(){
-    console.log(pagination, hasMore, totalPage);
 
     fetch(`/api/tickets/prev?before=${pagination.before}`)
       .then(res => {
@@ -61,7 +63,6 @@ function Home() {
   }
 
   function onNextBtnClick(){
-    console.log(pagination, hasMore);
 
     fetch(`/api/tickets/next?after=${pagination.after}`)
       .then(res => {
