@@ -38,3 +38,13 @@ body {
 .ticket-detail {
   text-align: left;
 }
+
+.ticket-row-link {
+  text-decoration: none;
+}
+.ticket-row {
+  padding: 10px;
+  margin-bottom: 10px;
+  background: lightgrey;
+  text-decoration: none;
+}

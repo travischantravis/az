@@ -6,6 +6,7 @@ const logger = require("morgan");
 const apiRouter = require("./routes/api");
 
 const app = express();
+require('dotenv').config()
 
 app.use(logger("dev"));
 app.use(express.json());

@@ -87,11 +87,11 @@ function Home() {
         <div>
           <p>Total tickets: {totalCount}</p>
           <p>Tickets on this page: {curPageCount}</p>
+          <button onClick={onPrevBtnClick} disabled={curPage === 0}>Prev Page</button>
+          <button onClick={onNextBtnClick} disabled={!hasMore}>Next Page</button>
           {tickets.map((ticket)=>{
             return <TicketRow key={ticket.id} ticket={ticket}/>          
           })}
-          <button onClick={onPrevBtnClick} disabled={curPage === 0}>Prev Page</button>
-          <button onClick={onNextBtnClick} disabled={!hasMore}>Next Page</button>
         </div>
       : 
         <Error errMsg={errMsg}/>}
