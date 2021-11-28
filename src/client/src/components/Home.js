@@ -20,7 +20,7 @@ function Home() {
         return res.json()
       })
       .then(json => {
-        // console.log("Zendesk", json);
+        console.log("Zendesk", json);
         if(json.error){
           setErrorMsg(json.error)
         }else{       
